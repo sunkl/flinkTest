@@ -20,6 +20,7 @@ object App  {
     val props = new Properties()
     props.setProperty("bootstrap.servers", "localhost:9092")
     props.setProperty("group.id", "flink-group")
+    println("fewkljfewoiuf")
     new FlinkKafkaConsumer[String](topic,new SimpleStringSchema(),props)
   }
   def main(args: Array[String]): Unit = {
