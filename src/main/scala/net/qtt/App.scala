@@ -22,6 +22,8 @@ object App  {
     props.setProperty("group.id", "flink-group")
     println("master push 1")
     new FlinkKafkaConsumer[String](topic,new SimpleStringSchema(),props)
+    println("master psuh 2")
+    println("maset push 3")
   }
   def main(args: Array[String]): Unit = {
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
