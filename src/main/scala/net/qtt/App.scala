@@ -20,15 +20,10 @@ object App  {
     val props = new Properties()
     props.setProperty("bootstrap.servers", "localhost:9092")
     props.setProperty("group.id", "flink-group")
-    println("master push 1")
     new FlinkKafkaConsumer[String](topic,new SimpleStringSchema(),props)
-    println("master psuh 2")
-    println("maset push 3")
   }
   def main(args: Array[String]): Unit = {
-    println("test_01 push 1")
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
-    println("test_02 push 2")
     val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
         .map(word=>(word,1))
