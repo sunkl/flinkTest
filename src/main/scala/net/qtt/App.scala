@@ -25,6 +25,7 @@ object App  {
   def main(args: Array[String]): Unit = {
     //println("m1")
     //m2
+    //m3
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
     val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
