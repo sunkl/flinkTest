@@ -23,6 +23,7 @@ object App  {
     new FlinkKafkaConsumer[String](topic,new SimpleStringSchema(),props)
   }
   def main(args: Array[String]): Unit = {
+    println("m 1")
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
     val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
