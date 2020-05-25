@@ -24,6 +24,7 @@ object App  {
   }
   def main(args: Array[String]): Unit = {
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
+    print("maset commi")
     val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
         .map(word=>(word,1))
