@@ -4,12 +4,10 @@ import java.util.Properties
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.api.java.tuple.Tuple
-import org.apache.flink.streaming.api.functions.{AssignerWithPeriodicWatermarks, AssignerWithPunctuatedWatermarks}
-import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream, StreamExecutionEnvironment}
-import org.apache.flink.streaming.api.watermark.Watermark
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.scala.{KeyedStream, StreamExecutionEnvironment}
 import org.apache.flink.streaming.api.windowing.time.Time
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 
 /**
  * Hello world!
@@ -23,10 +21,14 @@ object App  {
     new FlinkKafkaConsumer[String](topic,new SimpleStringSchema(),props)
   }
   def main(args: Array[String]): Unit = {
+<<<<<<< HEAD
     //println("m1")
     //m2
     //m3
     //t2
+=======
+    //t3
+>>>>>>> 3e5caab... t2
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
     val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
