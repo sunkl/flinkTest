@@ -22,12 +22,12 @@ object App  {
   }
   def main(args: Array[String]): Unit = {
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
-    val stream: KeyedStream[(String, Int), Tuple] = streamEnv.addSource(kafkaConsumerInstance("test_topic"))
+    val stream= streamEnv.addSource(kafkaConsumerInstance("test_topic"))
     .flatMap(line=>line.split(","))
         .map(word=>(word,1))
         .keyBy(0)
         .timeWindow(Time.seconds(3))
-    stream.print()
+//    stream.print()
     streamEnv.execute("fink_test")
   }
 }
